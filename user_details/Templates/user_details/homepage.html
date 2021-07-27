@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+{% load socialaccount %}
+{% if user.is_authenticated %}
+
+  <head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music for everyone - Spotify</title>
+    <link rel="icon" href="{% static 'user_details/assets/images/favicon.ico' %}">
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="{% static 'user_details/assets/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'user_details/assets/css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'user_details/assets/css/hero.css' %}">
+    <link rel="stylesheet" href="{% static 'user_details/assets/css/albums.css' %}">
+    <link rel="stylesheet" href="{% static 'user_details/assets/css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'user_details/assets/css/media-queries.css' %}">
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="header-container">
+        <div class="header-logo">
+          <img src="{% static 'user_details/assets/images/spotify-logo.svg' %}" href='../admin'>
+        </div>
+
+        <!-- This is the menu that will be shown on Desktop -->
+        <nav class="nav-desktop">
+          <!-- Site menu -->
+          <ul>
+            <li><a href="{% url 'new-playlist' %}">Make a Playlist</a></li>
+            <li><a href="{% url 'songs' %}">Songs</a></li>
+            <li><a href="{% url 'my-playlists' %}">My Playlists</a></li>
+            <li role="separator"></li>
+          </ul>
+          <!-- Profile menu -->
+          <div class="profile-container">
+            <input type="checkbox" class="dropdown-menu-toggler">
+            <div class="dropdown-menu">
+              <ul>
+                
+                
+                    <li><a href="#">Account</a></li>
+                    <li><a href="{% url 'logout' %}">Log out</a></li>
+                
+              </ul>
+            </div>
+            <div class="profile">
+              <svg viewBox="0 0 1024 1024" class="profile-icon">
+                <path
+                  d="M730.06 679.64q-45.377 53.444-101.84 83.443t-120 29.999q-64.032 0-120.75-30.503t-102.6-84.451q-40.335 13.109-77.645 29.747t-53.948 26.722l-17.142 10.084Q106.388 763.84 84.96 802.41t-21.428 73.107 25.461 59.242 60.754 24.705h716.95q35.293 0 60.754-24.705t25.461-59.242-21.428-72.603-51.679-57.225q-6.554-4.033-18.907-10.84t-51.427-24.453-79.409-30.755zm-221.84 25.72q-34.285 0-67.561-14.873t-60.754-40.335-51.175-60.502-40.083-75.124-25.461-84.451-9.075-87.728q0-64.032 19.915-116.22t54.452-85.964 80.67-51.931 99.072-18.151 99.072 18.151 80.67 51.931 54.452 85.964 19.915 116.22q0 65.04-20.167 130.58t-53.948 116.72-81.426 83.443-98.568 32.268z"
+                ></path>
+              </svg>
+            </div>
+            <ul>
+              <li>Profile</li>
+              <li>
+                <svg viewBox="0 0 1024 1024" class="profile-arrow">
+                  <path
+                    d="M476.455 806.696L95.291 425.532Q80.67 410.911 80.67 390.239t14.621-34.789 35.293-14.117 34.789 14.117L508.219 698.8l349.4-349.4q14.621-14.117 35.293-14.117t34.789 14.117 14.117 34.789-14.117 34.789L546.537 800.142q-19.159 19.159-38.318 19.159t-31.764-12.605z"
+                  ></path>
+                </svg>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+<!-- End of header -->
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-container">
+          <div class="hero-content">
+            <h1 class="hero-title">Go Premium. Be happy.</h1>
+            <button class="hero-button">GET SPOTIFY PREMIUM</button>
+            <div class="terms">
+              <span>*</span>
+              <a href="#" class="hero-terms-link">Terms and conditions</a
+              ><span>apply.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ALBUMS -->
+      <section class="albums">
+        <div class="albums-container">
+          <div class="albums-content">
+            <h2>Looking for music?</h2>
+            <p>Start listening to the best new releases.</p>
+            <button>LAUNCH WEB PLAYER</button>
+          </div>
+          <div class="albums-cards-container">
+            <!-- Travis Scott -->
+            <div class="album">
+              <img src="{% static 'user_details/assets/images/travis-scott.jpg' %}" >
+              <div class="album-info">
+                <h2>FRANCHISE (feat. Young Thug & M.I.A.)</h2>
+                <h4>Travis Scott</h4>
+                <a href="https://www.youtube.com/watch?v=_VRyoaNF9sk">PLAY NOW</a>
+              </div>
+            </div>
+            <!-- ZAYN -->
+            <div class="album">
+              <img src="{% static 'user_details/assets/images/zayn.jpg' %}" >
+              <div class="album-info">
+                <h2>Better</h2>
+                <h4>ZAYN</h4>
+                <a href="https://www.youtube.com/watch?v=NAo38Q9c4xA">PLAY NOW</a>
+              </div>
+            </div>
+            <!-- Joji -->
+            <div class="album">
+              <img src="{% static 'user_details/assets/images/joji.jpg' %}" >
+              <div class="album-info">
+                <h2>Nectar</h2>
+                <h4>Joji</h4>
+                <a href="https://www.youtube.com/watch?v=X4YlPELZKdQ">PLAY NOW</a>
+              </div>
+            </div>
+            <!-- Jennifer Lopez -->
+            <div class="album">
+              <img src="{% static 'user_details/assets/images/jennifer-lopez.jpg' %}" >
+              <div class="album-info">
+                <h2>Pa Ti + Lonely</h2>
+                <h4>Jennifer Lopez</h4>
+                <a href="https://www.youtube.com/watch?v=A1kuaEuLX78">PLAY NOW</a>
+              </div>
+            </div>
+            <!-- Machine Gun Kelly -->
+            <div class="album">
+              <img src="{% static 'user_details/assets/images/machine-gun-kelly.jpg' %}" >
+              <div class="album-info">
+                <h2>Tickets To My Downfall</h2>
+                <h4>Machine Gun Kelly</h4>
+                <a href="https://www.youtube.com/watch?v=HLTLVVicjEo&list=PLxA687tYuMWicwm-I5woXa75o-mXAJj-F">PLAY NOW</a>
+              </div>
+            </div>
+            <!-- Cold -->
+            <div class="album">
+              <img src="{% static 'user_details/assets/images/chris-stapleton.jpg' %}" >
+              <div class="album-info">
+                <h2>Cold</h2>
+                <h4>Chris Stapleton</h4>
+                <a href="https://www.youtube.com/watch?v=RppBLrT16ks">PLAY NOW</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+       <!-- FOOTER -->
+    <footer>
+        <nav class="footer-nav">
+          <div class="logo-footer">
+            <a href="#"><img src="{% static 'user_details/assets/images/spotify-logo.svg' %}" ></a>
+          </div>
+          <div class="top-links">
+            <div class="company-links">
+              <ul>
+                <li>COMPANY</li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">For the Record</a></li>
+              </ul>
+            </div>
+            <div class="communities-links">
+              <ul>
+                <li>COMMUNITIES</li>
+                <li><a href="#">For artists</a></li>
+                <li><a href="#">Developers</a></li>
+                <li><a href="#">Advertising</a></li>
+                <li><a href="#">Investors</a></li>
+                <li><a href="#">Vendors</a></li>
+              </ul>
+            </div>
+            <div class="useful-links">
+              <ul>
+                <li>USEFUL LINKS</li>
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Web Player</a></li>
+                <li><a href="#">Free Mobile App</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="social-icons">
+            <ul>
+              <li>
+                <a href="#"><img src="{% static 'user_details/assets/images/instagram-icon.svg' %}" ></a>
+              </li>
+              <li>
+                <a href="#"><img src="{% static 'user_details/assets/images/twitter-icon.svg' %}" ></a>
+              </li>
+              <li>
+                <a href="#"><img src="{% static 'user_details/assets/images/facebook-icon.svg' %}" ></a>
+              </li>
+            </ul>
+          </div>
+          <div class="country">
+            <a href="#"><span>USA</span><img src="{% static 'user_details/assets/images/us.svg' %}" ></a>
+          </div>
+          <div class="bottom-links">
+            <ul>
+              <li><a href="#">Legal</a></li>
+              <li><a href="#">Privacy Center</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Cookies</a></li>
+              <li><a href="#">About Ads</a></li>
+              <li><a href="#">Additional CA Privacy Disclosures</a></li>
+            </ul>
+            <span>&copy; 2020 Spotify AB</span>
+          </div>
+        </nav>
+      </footer>
+    </body>
+    <script src="{% static 'user_details/assets/js/script.js' %}"></script>
+    {% else %}
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="{% static 'user_details/assets/css/style.css' %}">
+
+    <title>Spotify</title>
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="row">
+            <div class="nav-container">
+                <img src="{% static 'user_details/assets/images/logo.svg' %}" alt="logo" class="logo">
+                <ul class="main-nav">
+                    <li>
+                        <a href="#">Premium</a>
+                    </li>
+                    <li>
+                        <a href="#">Help</a>
+                    </li>
+                    <li>
+                        <a href="#">Download</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'register' %}">Sign up</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'login' %}">Log in</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="hero-text-box">
+            <div class="header-text">
+                <h1>Music for everyone.</h1>
+                <br/>
+                <a class="btn btn-free" href="#">Get Spotify Free</a>
+                <a class="btn btn-premium" href="#">Get Spotify Premium</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="section-features">
+        <div class="row">
+            <div class="features">
+                <div class="features-description">
+                    <h2>What's on Spotify?</h2>
+                    <h3>Music</h3>
+                    <p>There are millions of songs on Spotify. Play your favorites, discover new tracks, and build the perfect
+                        collection.
+                    </p>
+                    <h3>Playlists</h3>
+                    <p>You’ll find readymade playlists to match your mood, put together by music fans and experts.</p>
+                    <h3>New Releases</h3>
+                    <p>Hear this week’s latest singles and albums, and check out what’s hot in the Top 50.</p>
+                </div>
+                <div class="features-album">
+                    <div class="album-showcase">
+                        <img src="{% static 'user_details/assets/images/album1.jpeg' %}" alt="album1"><img src="{% static 'user_details/assets/images/album2.jpeg' %}" alt="album2">
+                        <img src="{% static 'user_details/assets/images/album3.jpeg' %}" alt="album3"><img src="{% static 'user_details/assets/images/album4.jpeg' %}" alt="album4">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+
+    <section class="hero-easy">
+        <div class="row">
+            <div class="easy">
+                <div class="easy-phone">
+                    <img src="{% static 'user_details/assets/images/phone.svg' %}" alt="phone" class="phone">
+                    <div class="easy-phone-text">
+
+                    </div>
+                </div>
+                <div class="easy-description">
+                    <h2>It's easy.</h2>
+                    <h3>Search</h3>
+                    <p>Know what you want to listen to? Just search and hit play.</p>
+                    <h3>Browse</h3>
+                    <p>Check out the latest charts, brand new releases and great playlists for right now.</p>
+                    <h3>Discover</h3>
+                    <p>Enjoy new music every Monday with your own personal playlist. Or sit back and enjoy Radio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="hero-devices">
+        <div class="row">
+            <div class="devices">
+                <div class="devices-text">
+                    <h2>One Account. Listen
+                        <br /> everywhere.</h2>
+                    <ul class="device-list1">
+                        <li>Mobile</li>
+                        <li>Computer</li>
+                        <li>Tablet</li>
+                        <li>Car</li>
+                    </ul>
+                    <br />
+                    <ul class="device-list2">
+                        <li>Speaker</li>
+                        <li>Playstation</li>
+                        <li>Xbox</li>
+                        <li>TV</li>
+                        <li>Web Player</li>
+                    </ul>
+                </div>
+                <div class="devices-image">
+                    <img src="{% static 'user_details/assets/images/devices.svg' %}" alt="devices" class="imgdevices">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero-subscription">
+        <div class="subscription-title">
+            <h2>Go Get The Music</h2>
+        </div>
+        <div class="row">
+            <div class="subscription-info">
+                <div class="subscription-box">
+                    <div>
+                        <h3>Spotify Free</h3>
+                        <h4>0₫/ month</h4>
+                    </div>
+                    <div class="subscription-box-1">
+                        <ul>
+                            <li>
+                                <img src="{% static 'user_details/assets/images/checkmark.svg' %}" alt="checkmark" class="checkmark">Shuffle Play</li>
+                            <li>
+                                <img src="{% static 'user_details/assets/images/checkmark.svg' %}" alt="checkmark" class="checkmark">Ad free</li>
+                            <li>
+                                <img src="{% static 'user_details/assets/images/checkmark.svg' %}" alt="checkmark" class="checkmark">Unlimited skips</li>
+                            <li>
+                                <img src="{% static 'user_details/assets/images/checkmark.svg' %}" alt="checkmark" class="checkmark">Listen offline</li>
+                            <li>
+                                <img src="{% static 'user_details/assets/images/checkmark.svg' %}" alt="checkmark" class="checkmark">Play any track</li>
+                            <li>
+                                <img src="{% static 'user_details/assets/images/checkmark.svg' %}" alt="checkmark" class="checkmark">High quality audio</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a class="btn btn-free" href="#">Get Free</a>
+                    </div>
+                </div>
+                <div class="subscription-box">
+                    <div>
+                        <h3>Spotify Premium</h3>
+                        <h4>59.000₫ / month</h4>
+                        <!-- <p>start your 30 day free trial*</p> -->
+                    </div>
+                    <div>
+                        <ul>
+                            <li>
+                                <img src="{% static 'user_details/assets/images/checkmark.svg' %}" alt="checkmark" class="checkmark">Shuffle Play</li>
+                            <li>
+                                <img src="{% static 'user_details/assets/images/checkmark.svg' %}" alt="checkmark" class="checkmark">Ad free</li>
+                            <li>
+                                <img src="{% static 'user_details/assets/images/checkmark.svg' %}" alt="checkmark" class="checkmark">Unlimited skips</li>
+                            <li>
+                                <img src="{% static 'user_details/assets/images/checkmark.svg' %}" alt="checkmark" class="checkmark">Listen offline</li>
+                            <li>
+                                <img src="{% static 'user_details/assets/images/checkmark.svg' %}" alt="checkmark" class="checkmark">Play any track</li>
+                            <li>
+                                <img src="{% static 'user_details/assets/images/checkmark.svg' %}" alt="checkmark" class="checkmark">High quality audio</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a class="btn btn-free" href="#">Get Premium</a>
+                    </div>
+                </div>
+                <div class="subscription-bottom">
+                    <p>* Spotify® 30-Days Free Trial Offer Terms and Conditions apply. Users who have subscribed to the Premium
+                        or Unlimited service or who
+                        <br /> have taken a trial are ineligible for this offer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="row">
+            <div class="footer-container">
+                <div class="footer-top">
+                    <div>
+                        <img src="{% static 'user_details/assets/images/logo.svg' %}" alt="logo" class="logo-bottom">
+                    </div>
+                    <div class="footer-links">
+                        <div>
+                            <ul>
+                                <li>Company</li>
+                                <li>About</li>
+                                <li>Jobs</li>
+                                <li>Press</li>
+                                <li>News</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>Communities</li>
+                                <li>For Artists</li>
+                                <li>Developers</li>
+                                <li>Brands</li>
+                                <li>Investors</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>Useful Links</li>
+                                <li>Help</li>
+                                <li>Gift</li>
+                                <li>Web Player</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="social">
+                        <div class="social-media">
+                            <img src="{% static 'user_details/assets/images/instagram.png' %}">
+                        </div>
+                        <div class="social-media">
+                            <img src="{% static 'user_details/assets/images/twitter.png' %}">
+                        </div>
+                        <div class="social-media">
+                            <img src="{% static 'user_details/assets/images/facebook.png' %}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <div class="footer-legal">
+                        <ul>
+                            <li>Legal</li>
+                            <li>Privacy</li>
+                            <li>Cookies</li>
+                            <li>About Ads</li>
+                        </ul>
+                    </div>
+                    <div class="footer-copyright">
+                        <ul>
+                            <li>Vietnam(English)&nbsp;&nbsp;
+                                <img src="{% static 'user_details/assets/images/vn.svg' %}" alt="vn">
+                            </li>
+                            <li>© 2018 Spotify AB</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+{%endif%}
+  </html>
+
+
+      
